@@ -284,9 +284,6 @@
   .modal.open { display: flex; }
   .modal-box { width: min(1100px, 100%); margin: auto; }
   .gallery-main img { max-height: 72vh; }
-  @supports not (aspect-ratio: 16 / 9) {
-    .video-frame { height: 0; padding-top: 56.25%; }
-  }
   .modal-top {
     display: flex; justify-content: space-between; align-items: center;
     margin-bottom: 12px; color: #fff;
@@ -298,8 +295,13 @@
     padding: 8px 16px; cursor: pointer; text-transform: uppercase;
   }
   .m-close:hover, .m-close:focus-visible { border-color: var(--accent); color: var(--accent); }
-  .video-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; }
-  .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video-frame { width: 100%; background: #000; }
+  .video-frame video {
+    display: block; width: 100%; height: auto;
+    max-height: calc(100vh - 150px);
+    max-height: calc(100dvh - 150px);
+    background: #000;
+  }
 
   .gallery-main { position: relative; background: #000; }
   .gallery-main img { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; }
@@ -548,7 +550,8 @@
           <div class="p-actions">
             <a class="p-btn primary doc-link" href="assets/docs/karla-gnara-west.pdf"
                data-doc-title="Karla Gnara West, Ellenbrook">View project document</a>
-            <button class="p-btn" data-video="1bQAj6PLEBLBH5h6MgAJmjdE6qXu19QWP"
+            <button class="p-btn" data-video="assets/videos/karla-gnara-flythrough.mp4"
+                    data-poster="assets/covers/karla-poster.jpg"
                     data-title="Karla Gnara West Flythrough">
               <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2l10 6-10 6z"/></svg>
               Watch flythrough</button>
@@ -576,7 +579,8 @@
           <div class="p-actions">
             <a class="p-btn primary doc-link" href="assets/docs/fremantle-development.pdf"
                data-doc-title="Fremantle Development">View project document</a>
-            <button class="p-btn" data-video="19KRBvym3COBeCmLs9yjHorjgwSJbagm8"
+            <button class="p-btn" data-video="assets/videos/fremantle-flythrough.mp4"
+                    data-poster="assets/covers/fremantle-poster.jpg"
                     data-title="Fremantle Development Flythrough">
               <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2l10 6-10 6z"/></svg>
               Watch flythrough</button>
@@ -773,7 +777,9 @@
       <span class="m-title" id="video-title">Flythrough</span>
       <button class="m-close" data-close>Close ✕</button>
     </div>
-    <div class="video-frame" id="video-frame"></div>
+    <div class="video-frame" id="video-frame">
+      <video id="video-el" controls playsinline preload="metadata"></video>
+    </div>
   </div>
 </div>
 
@@ -830,7 +836,7 @@
   ];
 
   var videoModal = document.getElementById("video-modal");
-  var videoFrame = document.getElementById("video-frame");
+  var videoEl = document.getElementById("video-el");
   var videoTitle = document.getElementById("video-title");
   var galleryModal = document.getElementById("gallery-modal");
   var galleryImg = document.getElementById("gallery-img");
@@ -891,7 +897,9 @@
     if (!videoModal.classList.contains("open") && !galleryModal.classList.contains("open")) return;
     videoModal.classList.remove("open");
     galleryModal.classList.remove("open");
-    videoFrame.innerHTML = ""; // stop playback
+    videoEl.pause();
+    videoEl.removeAttribute("src");
+    videoEl.load(); // stop playback and free the stream
     unlockScroll();
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
@@ -899,9 +907,11 @@
   document.querySelectorAll("[data-video]").forEach(function (btn) {
     btn.addEventListener("click", function () {
       videoTitle.textContent = btn.getAttribute("data-title") || "Flythrough";
-      videoFrame.innerHTML = '<iframe src="https://drive.google.com/file/d/' +
-        btn.getAttribute("data-video") + '/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+      videoEl.poster = btn.getAttribute("data-poster") || "";
+      videoEl.src = btn.getAttribute("data-video");
       openModal(videoModal);
+      var p = videoEl.play();
+      if (p && p.catch) { p.catch(function () {}); }
     });
   });
 
