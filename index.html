@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hemen Boodia | Construction Management Portfolio</title>
+<meta name="description" content="Portfolio of Hemen Boodia, final year Construction Management student at Curtin University, Perth WA. Development proposals, documentation, 3D visualisation and an AI learning prototype.">
+<meta property="og:title" content="Hemen Boodia | Construction Management Portfolio">
+<meta property="og:description" content="Construction Management portfolio. Development proposals, documentation and 3D visualisation across Perth WA and Mauritius.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2316181c'/%3E%3Cpath d='M8 24V10l8-4 8 4v14' stroke='%23c47d24' stroke-width='2.5' fill='none'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #16181c;
+    --ink-soft: #3a3e45;
+    --paper: #f6f4f0;
+    --card: #ffffff;
+    --line: #d8d3ca;
+    --accent: #c47d24;
+    --accent-dark: #9c621a;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    --sans: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  section { scroll-margin-top: 70px; }
+
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- Nav ---------- */
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(22, 24, 28, 0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-top: 3px solid var(--accent);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-name {
+    color: #fff; text-decoration: none;
+    font-weight: 700; letter-spacing: 0.06em; font-size: 15px;
+    text-transform: uppercase; white-space: nowrap;
+  }
+  .nav-name span { color: var(--accent); }
+  nav.links { display: flex; gap: 28px; }
+  nav.links a {
+    color: rgba(255,255,255,0.75); text-decoration: none;
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.15s;
+  }
+  nav.links a:hover, nav.links a:focus-visible { color: var(--accent); }
+  .nav-toggle {
+    display: none;
+    width: 44px; height: 44px; flex: none;
+    background: none; border: 1px solid rgba(255,255,255,0.35);
+    cursor: pointer; padding: 0;
+    align-items: center; justify-content: center; flex-direction: column; gap: 5px;
+  }
+  .nav-toggle span { display: block; width: 20px; height: 2px; background: #fff; transition: transform 0.2s, opacity 0.2s; }
+  .nav-toggle:hover, .nav-toggle:focus-visible { border-color: var(--accent); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  @media (max-width: 680px) {
+    .wrap { padding: 0 18px; }
+    .nav-toggle { display: flex; }
+    nav.links {
+      display: none;
+      position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; gap: 0;
+      background: rgba(22, 24, 28, 0.98);
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding: 4px 0 10px;
+    }
+    nav.links.open { display: flex; }
+    nav.links a {
+      font-size: 14px; letter-spacing: 0.08em;
+      padding: 15px 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    nav.links a:first-child { border-top: none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+      var(--ink);
+    background-size: 48px 48px, 48px 48px, auto;
+    color: #fff;
+    padding: 96px 0 88px;
+  }
+  .hero .kicker {
+    font-family: var(--mono); font-size: 13px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(42px, 7vw, 76px);
+    font-weight: 800; line-height: 1.02; letter-spacing: -0.015em;
+    text-transform: uppercase;
+    max-width: 800px;
+  }
+  .hero p.lede {
+    margin-top: 28px; max-width: 660px;
+    font-size: 18px; color: rgba(255,255,255,0.78); line-height: 1.7;
+  }
+  .hero .cta-row { margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 26px; text-decoration: none;
+    font-weight: 600; font-size: 14.5px; letter-spacing: 0.03em;
+    border: 1px solid transparent; cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .btn-solid { background: var(--accent); color: #16181c; }
+  .btn-solid:hover, .btn-solid:focus-visible { background: #d99334; }
+  .btn-ghost { border-color: rgba(255,255,255,0.35); color: #fff; }
+  .btn-ghost:hover, .btn-ghost:focus-visible { border-color: var(--accent); color: var(--accent); }
+
+  .hero .scope-row {
+    margin-top: 56px; padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    display: flex; flex-wrap: wrap; gap: 10px 34px;
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.55);
+  }
+  .hero .scope-row b { color: rgba(255,255,255,0.85); font-weight: 500; }
+  @media (max-width: 400px) {
+    .hero { padding: 72px 0 64px; }
+    .hero h1 { font-size: 36px; }
+  }
+
+  /* ---------- Section shells ---------- */
+  section.block { padding: 88px 0; }
+  .sec-head { margin-bottom: 56px; }
+  .sec-head .kicker {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--accent-dark); margin-bottom: 12px;
+  }
+  .sec-head h2 {
+    font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+    letter-spacing: -0.01em; text-transform: uppercase;
+  }
+
+  /* ---------- Projects ---------- */
+  #projects { padding-top: 96px; }
+  .project {
+    display: grid; grid-template-columns: 7fr 5fr; gap: 48px;
+    align-items: center;
+    padding: 48px 0;
+    border-top: 1px solid var(--line);
+  }
+  .project:last-of-type { border-bottom: 1px solid var(--line); }
+  .project.flip .p-media { order: 2; }
+  .project.flip .p-body { order: 1; }
+  @media (max-width: 860px) {
+    .project { grid-template-columns: 1fr; gap: 24px; }
+    .project.flip .p-media { order: 0; }
+    .project.flip .p-body { order: 1; }
+  }
+  .p-media {
+    position: relative; overflow: hidden; background: #e8e4dc;
+    border: 1px solid var(--line);
+  }
+  .p-media a.media-link { display: block; }
+  .p-media a.media-link:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+  .p-media img {
+    width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top;
+    transition: transform 0.35s ease;
+  }
+  .p-media.wide img { aspect-ratio: 16 / 9; }
+  .p-media.doc { background: #fff; }
+  .p-media.doc img {
+    aspect-ratio: auto; height: auto; max-height: 640px;
+    object-fit: contain; object-position: center top;
+  }
+  .project:hover .p-media img { transform: scale(1.025); }
+  .project:hover .p-media.doc img { transform: none; }
+  .p-body .p-tag {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent-dark); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .p-tag .p-no {
+    background: var(--ink); color: var(--accent);
+    padding: 3px 9px; letter-spacing: 0.1em; flex: none;
+  }
+  .p-body h3 {
+    font-size: clamp(22px, 2.6vw, 30px); font-weight: 700; line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .p-body h3 a { text-decoration: none; transition: color 0.15s; }
+  .p-body h3 a:hover, .p-body h3 a:focus-visible { color: var(--accent-dark); }
+  .p-body p { color: var(--ink-soft); font-size: 15.5px; max-width: 46ch; }
+  .p-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .p-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 13.5px; font-weight: 600; letter-spacing: 0.02em;
+    padding: 10px 18px; text-decoration: none; cursor: pointer;
+    border: 1px solid var(--ink); color: var(--ink); background: transparent;
+    font-family: var(--sans);
+    transition: background 0.15s, color 0.15s;
+  }
+  .p-btn:hover, .p-btn:focus-visible { background: var(--ink); color: #fff; }
+  .p-btn.primary { background: var(--ink); color: #fff; }
+  .p-btn.primary:hover, .p-btn.primary:focus-visible { background: var(--accent-dark); border-color: var(--accent-dark); }
+  .p-btn svg { flex: none; }
+
+  /* ---------- About ---------- */
+  #about { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .about-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 56px; align-items: start; }
+  @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; gap: 28px; } }
+  .about-grid .lead {
+    font-size: clamp(20px, 2.4vw, 26px); font-weight: 600; line-height: 1.4;
+    border-left: 3px solid var(--accent); padding-left: 22px;
+  }
+  .about-copy p { color: var(--ink-soft); margin-bottom: 18px; font-size: 16px; }
+  .about-copy p.edu { color: var(--ink); }
+  .cap-list {
+    margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 28px;
+    list-style: none;
+  }
+  @media (max-width: 560px) { .cap-list { grid-template-columns: 1fr; } }
+  .cap-list li {
+    font-family: var(--mono); font-size: 13px; letter-spacing: 0.04em;
+    padding: 10px 0; border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .cap-list li::before { content: ""; width: 8px; height: 8px; background: var(--accent); flex: none; }
+  .cap-list.soft li::before { background: var(--ink); }
+
+  /* ---------- Contact ---------- */
+  #contact { background: var(--ink); color: #fff; }
+  #contact .sec-head .kicker { color: var(--accent); }
+  #contact .sec-head { margin-bottom: 32px; }
+  .contact-grid { display: flex; flex-wrap: wrap; gap: 20px 56px; align-items: center; }
+  .contact-grid p.big { font-size: 19px; color: rgba(255,255,255,0.8); max-width: 520px; }
+  .contact-items { display: flex; flex-direction: column; gap: 14px; }
+  .contact-items a, .contact-items span {
+    font-family: var(--mono); font-size: 14.5px; letter-spacing: 0.03em;
+    color: #fff; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .contact-items a:hover, .contact-items a:focus-visible { color: var(--accent); }
+  .contact-items svg { color: var(--accent); flex: none; }
+
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.45);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 22px 0; font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em;
+  }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+  /* ---------- Modals ---------- */
+  .modal {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(10, 11, 13, 0.92);
+    display: none; align-items: center; justify-content: center;
+    padding: 4vh 4vw;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .modal.open { display: flex; }
+  .modal-box { width: min(1100px, 100%); margin: auto; }
+  .gallery-main img { max-height: 72vh; }
+  @supports not (aspect-ratio: 16 / 9) {
+    .video-frame { height: 0; padding-top: 56.25%; }
+  }
+  .modal-top {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 12px; color: #fff;
+  }
+  .modal-top .m-title { font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .m-close {
+    background: none; border: 1px solid rgba(255,255,255,0.4); color: #fff;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em;
+    padding: 8px 16px; cursor: pointer; text-transform: uppercase;
+  }
+  .m-close:hover, .m-close:focus-visible { border-color: var(--accent); color: var(--accent); }
+  .video-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+  .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  .gallery-main { position: relative; background: #000; }
+  .gallery-main img { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; }
+  .g-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(22,24,28,0.8); color: #fff; border: none;
+    width: 46px; height: 46px; font-size: 20px; cursor: pointer;
+  }
+  .g-nav:hover, .g-nav:focus-visible { background: var(--accent); color: #16181c; }
+  .g-prev { left: 0; } .g-next { right: 0; }
+  .g-count {
+    position: absolute; bottom: 0; right: 0;
+    background: rgba(22,24,28,0.8); color: #fff;
+    font-family: var(--mono); font-size: 12px; padding: 6px 12px; letter-spacing: 0.08em;
+  }
+  .g-thumbs {
+    display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; margin-top: 8px;
+  }
+  @media (max-width: 700px) { .g-thumbs { grid-template-columns: repeat(5, 1fr); } }
+  .g-thumbs button {
+    padding: 0; border: 2px solid transparent; cursor: pointer; background: none;
+    opacity: 0.55; transition: opacity 0.15s;
+  }
+  .g-thumbs button img { aspect-ratio: 16 / 9; object-fit: cover; width: 100%; }
+  .g-thumbs button.active, .g-thumbs button:hover { opacity: 1; border-color: var(--accent); }
+
+  /* ---------- Document viewer ---------- */
+  .doc-viewer {
+    position: fixed; top: 0; left: 0; width: 100%;
+    height: 100vh; height: 100dvh;
+    z-index: 200;
+    background: #101114;
+    display: none; flex-direction: column;
+  }
+  .doc-viewer.open { display: flex; }
+  .dv-bar {
+    flex: none;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    padding: 12px 18px;
+    background: rgba(22, 24, 28, 0.98);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    color: #fff;
+  }
+  .dv-title {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+  .dv-tools { display: flex; gap: 8px; flex: none; }
+  .dv-zoom, .dv-close {
+    flex: none;
+    background: none; border: 1px solid rgba(255,255,255,0.4); color: #fff;
+    width: 44px; height: 44px; font-size: 18px; line-height: 1;
+    cursor: pointer;
+  }
+  .dv-zoom:hover, .dv-zoom:focus-visible,
+  .dv-close:hover, .dv-close:focus-visible { border-color: var(--accent); color: var(--accent); }
+  .dv-scroll {
+    flex: 1; overflow: auto; -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding: 24px 12px 100px;
+  }
+  .dv-dl {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    background: rgba(22, 24, 28, 0.95); color: #fff;
+    border: 1px solid rgba(255,255,255,0.4);
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em;
+    text-transform: uppercase; white-space: nowrap;
+    padding: 9px 16px; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .dv-dl:hover, .dv-dl:focus-visible { border-color: var(--accent); color: var(--accent); }
+  .dv-dl[hidden] { display: none; }
+  .dv-pages { width: max-content; max-width: none; margin: 0 auto; }
+  .dv-pages canvas {
+    display: block; margin: 0 auto 18px; max-width: none; height: auto;
+    background: #fff; box-shadow: 0 4px 28px rgba(0,0,0,0.55);
+  }
+  .dv-status {
+    color: rgba(255,255,255,0.75); text-align: center;
+    font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em;
+    padding: 48px 16px;
+  }
+  .dv-status a { color: var(--accent); }
+
+  /* ---------- Touch targets ---------- */
+  @media (pointer: coarse) {
+    .p-btn { padding: 13px 20px; }
+    .m-close { padding: 12px 18px; }
+    .dv-dl { padding: 12px 18px; }
+    .g-nav { width: 52px; height: 52px; }
+    .contact-items { gap: 18px; }
+  }
+
+  /* ---------- Print ---------- */
+  @media print {
+    header.nav, .modal, .doc-viewer, .hero .cta-row, button.p-btn { display: none !important; }
+    .hero { background: #fff !important; color: #000; padding: 24px 0; }
+    .hero p.lede { color: #333; }
+    .hero .scope-row { color: #555; border-color: #ccc; }
+    .hero .scope-row b { color: #000; }
+    #contact, footer { background: #fff !important; color: #000; }
+    #contact .contact-grid p.big { color: #333; }
+    .contact-items a, .contact-items span { color: #000; }
+    #contact .sec-head .kicker, .hero .kicker { color: var(--accent-dark); }
+    a.p-btn { border-color: #000; color: #000; background: none !important; }
+    .project { break-inside: avoid; }
+    footer { color: #555; border-top: 1px solid #ccc; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-name" href="#top">Hemen<span>&nbsp;Boodia</span></a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="links" id="site-menu" aria-label="Site">
+      <a href="#projects">Projects</a>
+      <a href="#about">Capability</a>
+      <a class="doc-link" href="assets/Hemen_Boodia_Resume.pdf"
+         data-doc-title="Resume, Hemen Boodia"
+         data-download="assets/Hemen_Boodia_Resume.pdf"
+         data-download-label="Download resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-label="Introduction">
+    <div class="wrap">
+      <p class="kicker">Construction Management &middot; Perth, Western Australia</p>
+      <h1>Delivering the<br>built environment</h1>
+      <p class="lede">
+        I&rsquo;m Hemen Boodia, a final year Construction Management student at Curtin
+        University, graduating November 2026. High Distinctions in Cost Management and
+        Contract Administration, with hands-on site experience across procurement, cost
+        tracking and inspections. This portfolio collects my project work from Western
+        Australia and Mauritius.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="#projects">View projects</a>
+        <a class="btn btn-ghost doc-link" href="assets/Hemen_Boodia_Resume.pdf"
+           data-doc-title="Resume, Hemen Boodia"
+           data-download="assets/Hemen_Boodia_Resume.pdf"
+           data-download-label="Download resume">View resume</a>
+        <a class="btn btn-ghost" href="mailto:boodiahemen@gmail.com">Get in touch</a>
+      </div>
+      <div class="scope-row">
+        <span><b>08</b>&ensp;Projects</span>
+        <span><b>02</b>&ensp;Countries</span>
+        <span><b>Cost Management</b> / <b>Contract Administration</b></span>
+        <span><b>BIM</b> &amp; <b>3D Visualisation</b></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="block" aria-label="Projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Selected work</p>
+        <h2>Projects</h2>
+      </div>
+
+      <!-- Fixed order set by Hemen: do not reorder or sort automatically -->
+      <!-- 01 — St John of God Midland ECI Proposal (2026) -->
+      <article class="project">
+        <div class="p-media wide">
+          <a class="media-link doc-link" href="assets/docs/sjog-midland-eci-presentation.pdf"
+             data-doc-title="St John of God Midland ECI Proposal"
+             aria-label="Open the St John of God Midland ECI Proposal presentation">
+            <img src="assets/covers/sjog-midland.jpg"
+                 alt="St John of God Midland ECI proposal title slide with hospital render" loading="lazy">
+          </a>
+        </div>
+        <div class="p-body">
+          <p class="p-tag"><span class="p-no">01</span> ECI Proposal &middot; Midland, WA &middot; 2026</p>
+          <h3><a class="doc-link" href="assets/docs/sjog-midland-eci-presentation.pdf"
+                 data-doc-title="St John of God Midland ECI Proposal">St John of God Midland ECI Proposal</a></h3>
+          <p>A simulated Early Contractor Involvement submission for the completed $202M
+             St John of God Midland Private Hospital expansion, covering delivery
+             methodology, program, site logistics and a full elemental cost plan. I
+             prepared the financial capability analysis and presented the financial
+             section. Full submission available on request.</p>
+          <div class="p-actions">
+            <a class="p-btn primary doc-link" href="assets/docs/sjog-midland-eci-presentation.pdf"
+               data-doc-title="St John of God Midland ECI Proposal">View presentation</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 — Cognivue (2026) -->
+      <article class="project flip">
+        <div class="p-media">
+          <a class="media-link" href="https://anishboodia-dot.github.io/ai-ilecture-checkpoints-demo"
+             target="_blank" rel="noopener"
+             aria-label="Open the Cognivue live demo in a new tab">
+            <img src="assets/cognivue-cover.png"
+                 alt="Cognivue prototype interface with AI checkpoint markers on a lecture timeline" loading="lazy">
+          </a>
+        </div>
+        <div class="p-body">
+          <p class="p-tag"><span class="p-no">02</span> AI Learning Prototype &middot; Group Project &middot; 2026</p>
+          <h3><a href="https://anishboodia-dot.github.io/ai-ilecture-checkpoints-demo"
+                 target="_blank" rel="noopener">Cognivue</a></h3>
+          <p>An AI add-on concept for lecture recordings that pins quiz checkpoints to
+             timestamps, pauses for short diagnostics, and reports cohort misconceptions
+             back to lecturers. Built and deployed as a working demo in one week.</p>
+          <div class="p-actions">
+            <a class="p-btn primary" target="_blank" rel="noopener"
+               href="https://anishboodia-dot.github.io/ai-ilecture-checkpoints-demo">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 3h7v7M13 3 7 9"/><path d="M11 9v4H3V5h4"/></svg>
+              Launch live demo</a>
+            <a class="p-btn doc-link" href="assets/docs/cognivue-presentation.pdf"
+               data-doc-title="Cognivue Presentation"
+               data-download="assets/Cognivue_Presentation.pptx"
+               data-download-label="Download PowerPoint">View presentation</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 — Karla Gnara West, Ellenbrook (2025) -->
+      <article class="project">
+        <div class="p-media wide">
+          <a class="media-link doc-link" href="assets/docs/karla-gnara-west.pdf"
+             data-doc-title="Karla Gnara West, Ellenbrook"
+             aria-label="Open the Karla Gnara West document">
+            <img src="assets/covers/karla-gnara.jpg"
+                 alt="Karla Gnara West Ellenbrook flythrough still" loading="lazy">
+          </a>
+        </div>
+        <div class="p-body">
+          <p class="p-tag"><span class="p-no">03</span> Precinct Design &middot; Ellenbrook, WA &middot; 2025</p>
+          <h3><a class="doc-link" href="assets/docs/karla-gnara-west.pdf"
+                 data-doc-title="Karla Gnara West, Ellenbrook">Karla Gnara West, Ellenbrook</a></h3>
+          <p>Master plan for a connected, affordable residential community in Ellenbrook,
+             WA, structured as six precincts balancing housing density, local employment
+             and retained bushland.</p>
+          <div class="p-actions">
+            <a class="p-btn primary doc-link" href="assets/docs/karla-gnara-west.pdf"
+               data-doc-title="Karla Gnara West, Ellenbrook">View project document</a>
+            <button class="p-btn" data-video="1bQAj6PLEBLBH5h6MgAJmjdE6qXu19QWP"
+                    data-title="Karla Gnara West Flythrough">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2l10 6-10 6z"/></svg>
+              Watch flythrough</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 — Fremantle Development (2024) -->
+      <article class="project flip">
+        <div class="p-media wide">
+          <a class="media-link doc-link" href="assets/docs/fremantle-development.pdf"
+             data-doc-title="Fremantle Development"
+             aria-label="Open the Fremantle Development document">
+            <img src="assets/covers/fremantle.jpg"
+                 alt="Fremantle Development flythrough still" loading="lazy">
+          </a>
+        </div>
+        <div class="p-body">
+          <p class="p-tag"><span class="p-no">04</span> Development Design &middot; Fremantle, WA &middot; 2024</p>
+          <h3><a class="doc-link" href="assets/docs/fremantle-development.pdf"
+                 data-doc-title="Fremantle Development">Fremantle Development</a></h3>
+          <p>A waterfront redevelopment concept for Fremantle with student housing,
+             short-stay accommodation, a public pool and market space, modelled and
+             rendered in Lumion.</p>
+          <div class="p-actions">
+            <a class="p-btn primary doc-link" href="assets/docs/fremantle-development.pdf"
+               data-doc-title="Fremantle Development">View project document</a>
+            <button class="p-btn" data-video="19KRBvym3COBeCmLs9yjHorjgwSJbagm8"
+                    data-title="Fremantle Development Flythrough">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2l10 6-10 6z"/></svg>
+              Watch flythrough</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 — Causeway to Curtin Proposal (2024) -->
+      <article class="project">
+        <div class="p-media doc">
+          <a class="media-link doc-link" href="assets/docs/causeway-to-curtin.pdf"
+             data-doc-title="Causeway to Curtin Proposal"
+             aria-label="Open the Causeway to Curtin Proposal document">
+            <img src="assets/covers/causeway.png"
+                 alt="Causeway to Curtin proposal document cover" loading="lazy">
+          </a>
+        </div>
+        <div class="p-body">
+          <p class="p-tag"><span class="p-no">05</span> Urban Design &middot; Perth, WA &middot; 2024</p>
+          <h3><a class="doc-link" href="assets/docs/causeway-to-curtin.pdf"
+                 data-doc-title="Causeway to Curtin Proposal">Causeway to Curtin Proposal</a></h3>
+          <p>A safety and mobility proposal for the corridor linking Perth&rsquo;s Causeway
+             precinct to Curtin University, with staged actions assigned to Main Roads WA
+             and the Town of Victoria Park.</p>
+          <div class="p-actions">
+            <a class="p-btn primary doc-link" href="assets/docs/causeway-to-curtin.pdf"
+               data-doc-title="Causeway to Curtin Proposal">View project document</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 06 — Le Caudan Waterfront (2024) -->
+      <article class="project flip">
+        <div class="p-media doc">
+          <a class="media-link doc-link" href="assets/docs/le-caudan-waterfront.pdf"
+             data-doc-title="Le Caudan Waterfront"
+             aria-label="Open the Le Caudan Waterfront document">
+            <img src="assets/covers/le-caudan.png"
+                 alt="Le Caudan Waterfront study document cover" loading="lazy">
+          </a>
+        </div>
+        <div class="p-body">
+          <p class="p-tag"><span class="p-no">06</span> Waterfront Study &middot; Port Louis, Mauritius &middot; 2024</p>
+          <h3><a class="doc-link" href="assets/docs/le-caudan-waterfront.pdf"
+                 data-doc-title="Le Caudan Waterfront">Le Caudan Waterfront</a></h3>
+          <p>An international case study of Le Caudan Waterfront in Port Louis, Mauritius,
+             assessing the precinct&rsquo;s safety, attractiveness, friendliness and
+             efficiency through site analysis.</p>
+          <div class="p-actions">
+            <a class="p-btn primary doc-link" href="assets/docs/le-caudan-waterfront.pdf"
+               data-doc-title="Le Caudan Waterfront">View project document</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 07 — Congomah Residence (2024) -->
+      <article class="project">
+        <div class="p-media wide">
+          <a class="media-link gallery-link" href="assets/renders/congomah-01.jpg"
+             aria-label="Open the Congomah Residence render gallery">
+            <img src="assets/renders/congomah-01.jpg"
+                 alt="Congomah Residence exterior render" loading="lazy">
+          </a>
+        </div>
+        <div class="p-body">
+          <p class="p-tag"><span class="p-no">07</span> Residential &middot; Congomah, Mauritius &middot; 2024</p>
+          <h3><a class="gallery-link" href="assets/renders/congomah-01.jpg">Congomah Residence</a></h3>
+          <p>A residential design in Congomah, Mauritius, presented through a set of
+             ten exterior renders.</p>
+          <div class="p-actions">
+            <button class="p-btn primary" id="open-gallery">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M1 3h14v10H1zM3 11l3-4 2.5 3L11 6l2 5z"/></svg>
+              View render gallery (10)</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 08 — Norman Fisher House (2023) -->
+      <article class="project flip">
+        <div class="p-media doc">
+          <a class="media-link doc-link" href="assets/docs/norman-fisher-house.pdf"
+             data-doc-title="Norman Fisher House"
+             aria-label="Open the Norman Fisher House document">
+            <img src="assets/covers/fisher-house.png"
+                 alt="Norman Fisher House case study document cover" loading="lazy">
+          </a>
+        </div>
+        <div class="p-body">
+          <p class="p-tag"><span class="p-no">08</span> Architectural Case Study &middot; 2023</p>
+          <h3><a class="doc-link" href="assets/docs/norman-fisher-house.pdf"
+                 data-doc-title="Norman Fisher House">Norman Fisher House</a></h3>
+          <p>A case study of Louis Kahn&rsquo;s Fisher House, analysed and rebuilt through
+             detailed drawings and 3D modelling.</p>
+          <div class="p-actions">
+            <a class="p-btn primary doc-link" href="assets/docs/norman-fisher-house.pdf"
+               data-doc-title="Norman Fisher House">View project document</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ CAPABILITY ============ -->
+  <section id="about" class="block" aria-label="Capability">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Profile</p>
+        <h2>Capability</h2>
+      </div>
+      <div class="about-grid">
+        <p class="lead">
+          From cost plans and contracts through to site, with the documentation and
+          visualisation skills to communicate every stage.
+        </p>
+        <div class="about-copy">
+          <p class="edu"><b>Bachelor of Applied Science (Construction Management), Curtin
+             University, expected November 2026.</b> Seven High Distinctions across cost,
+             contracts, planning and surveying units. Duke of Edinburgh International
+             Award (Gold). Languages: English, French (DELF B2) and Mauritian Creole.</p>
+          <p>Semester 1 of 2026 returned four High Distinctions and a Distinction across
+             Contract Administration, Cost Management, Professional Practice, Integrated
+             Construction Project and Engineering Measurement, following earlier High
+             Distinctions in Building Surveying, Construction Planning and Scheduling,
+             and Specialised Construction.</p>
+          <p>On site in Mauritius I supported delivery of a four level residential new
+             build as a Project Coordination Assistant. The role covered procurement,
+             supplier and subcontractor coordination, cost tracking against budget,
+             construction documentation and assistance with inspections and safety
+             checks. I am looking for a graduate role in project delivery, contracts
+             administration or commercial construction in Western Australia.</p>
+          <ul class="cap-list" aria-label="Capabilities">
+            <li>Project coordination</li>
+            <li>Contract administration</li>
+            <li>Cost estimation &amp; tracking</li>
+            <li>Procurement &amp; supplier liaison</li>
+            <li>Site inspections, WHS &amp; quality</li>
+            <li>CESMM4, take offs &amp; BoQ</li>
+          </ul>
+          <ul class="cap-list soft" aria-label="Software">
+            <li>CostX &middot; MS Project &middot; Excel</li>
+            <li>Revit &middot; Navisworks &middot; Revizto</li>
+            <li>AutoCAD &middot; Lumion</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="block" aria-label="Contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Contact</p>
+        <h2>Let&rsquo;s work together</h2>
+      </div>
+      <div class="contact-grid">
+        <p class="big">Based in Perth, Western Australia, seeking a graduate role in
+           project delivery, contracts administration or commercial construction.</p>
+        <div class="contact-items">
+          <a href="mailto:boodiahemen@gmail.com">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+            boodiahemen@gmail.com</a>
+          <a href="tel:+61434716685">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            0434 716 685</a>
+          <span>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Perth, Western Australia</span>
+          <a class="doc-link" href="assets/Hemen_Boodia_Resume.pdf"
+             data-doc-title="Resume, Hemen Boodia"
+             data-download="assets/Hemen_Boodia_Resume.pdf"
+             data-download-label="Download resume">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg>
+            View resume (PDF)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Hemen Boodia</span>
+    <span>Perth, Western Australia</span>
+  </div>
+</footer>
+
+<!-- ============ VIDEO MODAL ============ -->
+<div class="modal" id="video-modal" role="dialog" aria-modal="true" aria-label="Flythrough video">
+  <div class="modal-box">
+    <div class="modal-top">
+      <span class="m-title" id="video-title">Flythrough</span>
+      <button class="m-close" data-close>Close ✕</button>
+    </div>
+    <div class="video-frame" id="video-frame"></div>
+  </div>
+</div>
+
+<!-- ============ GALLERY MODAL ============ -->
+<div class="modal" id="gallery-modal" role="dialog" aria-modal="true" aria-label="Congomah Residence render gallery">
+  <div class="modal-box">
+    <div class="modal-top">
+      <span class="m-title">Congomah Residence Renders</span>
+      <button class="m-close" data-close>Close ✕</button>
+    </div>
+    <div class="gallery-main">
+      <img id="gallery-img" src="" alt="Congomah Residence render">
+      <button class="g-nav g-prev" id="g-prev" aria-label="Previous render">&#8249;</button>
+      <button class="g-nav g-next" id="g-next" aria-label="Next render">&#8250;</button>
+      <span class="g-count" id="g-count">1 / 10</span>
+    </div>
+    <div class="g-thumbs" id="g-thumbs"></div>
+  </div>
+</div>
+
+<!-- ============ DOCUMENT VIEWER ============ -->
+<div class="doc-viewer" id="doc-viewer" role="dialog" aria-modal="true" aria-label="Document viewer">
+  <div class="dv-bar">
+    <span class="dv-title" id="dv-title">Document</span>
+    <div class="dv-tools">
+      <button class="dv-zoom" id="dv-zoom-out" aria-label="Zoom out">&minus;</button>
+      <button class="dv-zoom" id="dv-zoom-in" aria-label="Zoom in">+</button>
+      <button class="dv-close" id="dv-close" aria-label="Close document">&#10005;</button>
+    </div>
+  </div>
+  <div class="dv-scroll" id="dv-scroll">
+    <p class="dv-status" id="dv-status">Loading document&hellip;</p>
+    <div class="dv-pages" id="dv-pages"></div>
+  </div>
+  <a class="dv-dl" id="dv-dl" download hidden>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 21h16"/></svg>
+    <span id="dv-dl-label">Download</span>
+  </a>
+</div>
+
+<script>
+  // Congomah render gallery (self hosted)
+  var GALLERY_SRCS = [
+    "assets/renders/congomah-01.jpg",
+    "assets/renders/congomah-02.jpg",
+    "assets/renders/congomah-03.jpg",
+    "assets/renders/congomah-04.jpg",
+    "assets/renders/congomah-05.jpg",
+    "assets/renders/congomah-06.jpg",
+    "assets/renders/congomah-07.jpg",
+    "assets/renders/congomah-08.jpg",
+    "assets/renders/congomah-09.jpg",
+    "assets/renders/congomah-10.jpg"
+  ];
+
+  var videoModal = document.getElementById("video-modal");
+  var videoFrame = document.getElementById("video-frame");
+  var videoTitle = document.getElementById("video-title");
+  var galleryModal = document.getElementById("gallery-modal");
+  var galleryImg = document.getElementById("gallery-img");
+  var gCount = document.getElementById("g-count");
+  var gThumbs = document.getElementById("g-thumbs");
+  var gIndex = 0;
+  var lastFocus = null;
+
+  // iOS Safari ignores body overflow:hidden, so lock scroll by fixing the body
+  var scrollLockY = 0, scrollLocked = false;
+  function lockScroll() {
+    if (scrollLocked) return;
+    scrollLocked = true;
+    scrollLockY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.position = "fixed";
+    document.body.style.top = (-scrollLockY) + "px";
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
+  }
+  function unlockScroll() {
+    if (!scrollLocked) return;
+    scrollLocked = false;
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    document.body.style.width = "";
+    window.scrollTo(0, scrollLockY);
+  }
+  window.__lockScroll = lockScroll;
+  window.__unlockScroll = unlockScroll;
+
+  // Mobile menu
+  var navToggle = document.getElementById("nav-toggle");
+  var navMenu = document.getElementById("site-menu");
+  function closeMenu() {
+    navMenu.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+  }
+  navToggle.addEventListener("click", function () {
+    var open = navMenu.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  navMenu.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", closeMenu); });
+  document.addEventListener("click", function (e) {
+    if (navMenu.classList.contains("open") && !navMenu.contains(e.target) && !navToggle.contains(e.target)) closeMenu();
+  });
+
+  function openModal(m) {
+    lastFocus = document.activeElement;
+    m.classList.add("open");
+    lockScroll();
+    var c = m.querySelector(".m-close");
+    if (c) c.focus();
+  }
+  function closeModals() {
+    if (!videoModal.classList.contains("open") && !galleryModal.classList.contains("open")) return;
+    videoModal.classList.remove("open");
+    galleryModal.classList.remove("open");
+    videoFrame.innerHTML = ""; // stop playback
+    unlockScroll();
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  document.querySelectorAll("[data-video]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      videoTitle.textContent = btn.getAttribute("data-title") || "Flythrough";
+      videoFrame.innerHTML = '<iframe src="https://drive.google.com/file/d/' +
+        btn.getAttribute("data-video") + '/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+      openModal(videoModal);
+    });
+  });
+
+  function showRender(i) {
+    gIndex = (i + GALLERY_SRCS.length) % GALLERY_SRCS.length;
+    galleryImg.src = GALLERY_SRCS[gIndex];
+    galleryImg.alt = "Congomah Residence render " + (gIndex + 1) + " of " + GALLERY_SRCS.length;
+    gCount.textContent = (gIndex + 1) + " / " + GALLERY_SRCS.length;
+    gThumbs.querySelectorAll("button").forEach(function (b, j) {
+      b.classList.toggle("active", j === gIndex);
+    });
+  }
+  GALLERY_SRCS.forEach(function (src, i) {
+    var b = document.createElement("button");
+    b.setAttribute("aria-label", "Render " + (i + 1));
+    b.innerHTML = '<img src="' + src + '" alt="" loading="lazy">';
+    b.addEventListener("click", function () { showRender(i); });
+    gThumbs.appendChild(b);
+  });
+  function openGallery(i) { showRender(i); openModal(galleryModal); }
+  document.getElementById("open-gallery").addEventListener("click", function () { openGallery(0); });
+  document.querySelectorAll("a.gallery-link").forEach(function (a) {
+    a.addEventListener("click", function (e) { e.preventDefault(); openGallery(0); });
+  });
+  document.getElementById("g-prev").addEventListener("click", function () { showRender(gIndex - 1); });
+  document.getElementById("g-next").addEventListener("click", function () { showRender(gIndex + 1); });
+
+  // Swipe between renders on touch screens
+  var touchX = null;
+  var galleryMain = document.querySelector(".gallery-main");
+  galleryMain.addEventListener("touchstart", function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+  galleryMain.addEventListener("touchend", function (e) {
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    touchX = null;
+    if (Math.abs(dx) > 40) { showRender(dx < 0 ? gIndex + 1 : gIndex - 1); }
+  }, { passive: true });
+
+  document.querySelectorAll("[data-close]").forEach(function (b) { b.addEventListener("click", closeModals); });
+  [videoModal, galleryModal].forEach(function (m) {
+    m.addEventListener("click", function (e) { if (e.target === m) closeModals(); });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { closeModals(); closeMenu(); }
+    if (galleryModal.classList.contains("open")) {
+      if (e.key === "ArrowLeft") showRender(gIndex - 1);
+      if (e.key === "ArrowRight") showRender(gIndex + 1);
+    }
+  });
+</script>
+
+<script type="module">
+  // Built in PDF viewer (PDF.js, self hosted). No Google, no new tabs, no downloads.
+  import * as pdfjsLib from "./assets/pdfjs/pdf.min.mjs";
+  pdfjsLib.GlobalWorkerOptions.workerSrc = "./assets/pdfjs/pdf.worker.min.mjs";
+
+  var viewer = document.getElementById("doc-viewer");
+  var pagesEl = document.getElementById("dv-pages");
+  var statusEl = document.getElementById("dv-status");
+  var titleEl = document.getElementById("dv-title");
+  var closeBtn = document.getElementById("dv-close");
+  var scrollEl = document.getElementById("dv-scroll");
+  var dlBtn = document.getElementById("dv-dl");
+  var dlLabelEl = document.getElementById("dv-dl-label");
+  var zoomInBtn = document.getElementById("dv-zoom-in");
+  var zoomOutBtn = document.getElementById("dv-zoom-out");
+  var session = 0;
+  var currentTask = null;
+  var docLastFocus = null;
+  var zoom = 1;
+
+  function applyZoom() {
+    pagesEl.querySelectorAll("canvas").forEach(function (c) {
+      var base = parseFloat(c.dataset.basew || "0");
+      if (base) c.style.width = Math.round(base * zoom) + "px";
+    });
+  }
+  zoomInBtn.addEventListener("click", function () { zoom = Math.min(3, zoom + 0.25); applyZoom(); });
+  zoomOutBtn.addEventListener("click", function () { zoom = Math.max(0.5, zoom - 0.25); applyZoom(); });
+
+  async function openDoc(url, title, dlHref, dlLabel) {
+    session += 1;
+    var mySession = session;
+    zoom = 1;
+    docLastFocus = document.activeElement;
+    titleEl.textContent = title || "Document";
+    pagesEl.innerHTML = "";
+    statusEl.innerHTML = "Loading document&hellip;";
+    statusEl.style.display = "block";
+    scrollEl.scrollTop = 0;
+    if (dlHref) {
+      dlBtn.setAttribute("href", dlHref);
+      dlLabelEl.textContent = dlLabel || "Download";
+      dlBtn.hidden = false;
+    } else {
+      dlBtn.hidden = true;
+      dlBtn.removeAttribute("href");
+    }
+    viewer.classList.add("open");
+    window.__lockScroll();
+    closeBtn.focus();
+    try {
+      var task = pdfjsLib.getDocument(url);
+      currentTask = task;
+      var pdf = await task.promise;
+      if (mySession !== session) return;
+      statusEl.style.display = "none";
+      for (var n = 1; n <= pdf.numPages; n += 1) {
+        if (mySession !== session) return;
+        var page = await pdf.getPage(n);
+        if (mySession !== session) return;
+        var containerW = Math.min(Math.max((scrollEl.clientWidth || 824) - 24, 260), 1100);
+        var base = page.getViewport({ scale: 1 });
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var scale = containerW / base.width;
+        var vp = page.getViewport({ scale: scale * dpr });
+        var maxPx = 4096; // keep canvases within iOS memory limits
+        if (vp.width > maxPx) {
+          vp = page.getViewport({ scale: (scale * dpr) * (maxPx / vp.width) });
+        }
+        var canvas = document.createElement("canvas");
+        canvas.width = Math.floor(vp.width);
+        canvas.height = Math.floor(vp.height);
+        var cssW = Math.min(containerW, Math.floor(vp.width / dpr));
+        canvas.dataset.basew = cssW;
+        canvas.style.width = Math.round(cssW * zoom) + "px";
+        pagesEl.appendChild(canvas);
+        // "print" intent renders without requestAnimationFrame pacing, so pages
+        // keep rendering even if the tab is backgrounded mid-load
+        await page.render({ canvasContext: canvas.getContext("2d"), viewport: vp, intent: "print" }).promise;
+      }
+    } catch (err) {
+      if (mySession !== session) return;
+      statusEl.style.display = "block";
+      statusEl.innerHTML = 'The document could not be displayed here. <a href="' + url + '">Open the PDF directly</a>.';
+    }
+  }
+
+  function closeDoc() {
+    if (!viewer.classList.contains("open")) return;
+    session += 1;
+    if (currentTask) { try { currentTask.destroy(); } catch (e) {} currentTask = null; }
+    viewer.classList.remove("open");
+    pagesEl.innerHTML = "";
+    window.__unlockScroll();
+    if (docLastFocus && docLastFocus.focus) docLastFocus.focus();
+  }
+
+  document.querySelectorAll("a.doc-link").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      openDoc(
+        a.getAttribute("href"),
+        a.getAttribute("data-doc-title"),
+        a.getAttribute("data-download"),
+        a.getAttribute("data-download-label")
+      );
+    });
+  });
+  closeBtn.addEventListener("click", closeDoc);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && viewer.classList.contains("open")) closeDoc();
+  });
+</script>
+
+</body>
+</html>

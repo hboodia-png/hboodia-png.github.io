@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hemen Boodia | Construction Management Portfolio</title>
+<meta name="description" content="Portfolio of Hemen Boodia, final year Construction Management student at Curtin University, Perth WA. Development proposals, documentation, 3D visualisation and an AI learning prototype.">
+<meta property="og:title" content="Hemen Boodia | Construction Management Portfolio">
+<meta property="og:description" content="Construction Management portfolio. Development proposals, documentation and 3D visualisation across Perth WA and Mauritius.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23121417'/%3E%3Cpath d='M8 25V7h4.2v7h7.6V7H24v18h-4.2v-7h-7.6v7z' fill='%23d9a44f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #121417;
+    --ink-2: #1b1e23;
+    --paper: #faf9f6;
+    --text: #2c2e33;
+    --muted: #6d7076;
+    --line: #e3e0d8;
+    --accent: #b8863b;
+    --accent-deep: #8a6526;
+    --accent-bright: #d9a44f;
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  section { scroll-margin-top: 76px; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+
+  .label {
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+
+  /* ---------- Nav ---------- */
+  header.nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 60;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    color: #fff;
+  }
+  header.nav.solid {
+    background: rgba(18, 20, 23, 0.96);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.08);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .nav-name {
+    text-decoration: none; font-family: var(--serif); font-weight: 500;
+    font-size: 19px; letter-spacing: 0.01em;
+  }
+  .nav-name em { font-style: normal; color: var(--accent-bright); }
+  nav.links { display: flex; gap: 30px; align-items: center; }
+  nav.links a {
+    color: rgba(255,255,255,0.82); text-decoration: none;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+    transition: color 0.15s;
+  }
+  nav.links a:hover, nav.links a:focus-visible { color: var(--accent-bright); }
+  nav.links a.pill {
+    border: 1px solid rgba(255,255,255,0.45); padding: 9px 18px; border-radius: 2px;
+    color: #fff;
+  }
+  nav.links a.pill:hover, nav.links a.pill:focus-visible {
+    background: var(--accent-bright); border-color: var(--accent-bright); color: var(--ink);
+  }
+  @media (max-width: 680px) {
+    nav.links { gap: 16px; }
+    nav.links a { font-size: 11px; letter-spacing: 0.12em; }
+    nav.links a.pill { padding: 7px 12px; }
+    .nav-name { font-size: 17px; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative; min-height: 92vh;
+    display: flex; align-items: flex-end;
+    color: #fff; background: var(--ink);
+    overflow: hidden;
+  }
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .hero-bg::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(to top, rgba(12,13,16,0.94) 0%, rgba(12,13,16,0.55) 45%, rgba(12,13,16,0.35) 100%);
+  }
+  .hero-inner { position: relative; z-index: 1; width: 100%; padding: 140px 0 72px; }
+  .hero .label { color: var(--accent-bright); margin-bottom: 22px; }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(46px, 7.5vw, 96px); line-height: 1.02; letter-spacing: -0.01em;
+    max-width: 860px;
+  }
+  .hero p.lede {
+    margin-top: 26px; max-width: 620px;
+    font-size: 17px; color: rgba(255,255,255,0.82); line-height: 1.7;
+  }
+  .hero .cta-row { margin-top: 38px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 28px; text-decoration: none; cursor: pointer;
+    font-family: var(--sans); font-weight: 600; font-size: 13px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    border-radius: 2px; border: 1px solid transparent;
+    transition: background 0.18s, color 0.18s, border-color 0.18s;
+  }
+  .btn-gold { background: var(--accent-bright); color: var(--ink); }
+  .btn-gold:hover, .btn-gold:focus-visible { background: #fff; }
+  .btn-ghost { border-color: rgba(255,255,255,0.5); color: #fff; }
+  .btn-ghost:hover, .btn-ghost:focus-visible { border-color: var(--accent-bright); color: var(--accent-bright); }
+  .hero .credit {
+    position: absolute; right: 28px; bottom: 20px; z-index: 1;
+    font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  @media (max-width: 680px) { .hero .credit { display: none; } }
+
+  /* ---------- Stat band ---------- */
+  .stats { background: var(--ink); color: #fff; border-top: 1px solid rgba(255,255,255,0.1); }
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat {
+    padding: 26px 24px; border-left: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat:first-child { border-left: none; padding-left: 0; }
+  .stat .n {
+    font-family: var(--serif); font-weight: 500; font-size: 30px; color: var(--accent-bright);
+    line-height: 1.1;
+  }
+  .stat .t { margin-top: 4px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+  @media (max-width: 760px) {
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .stat { padding: 20px 18px; }
+    .stat:nth-child(3) { border-left: none; padding-left: 0; }
+    .stat:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.1); }
+  }
+
+  /* ---------- Section heads ---------- */
+  .sec { padding: 100px 0 84px; }
+  .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; margin-bottom: 64px; }
+  .sec-head .label { color: var(--accent-deep); }
+  .sec-head h2 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(34px, 4.5vw, 52px); line-height: 1.05; letter-spacing: -0.01em;
+    color: var(--ink); margin-top: 10px;
+  }
+  .sec-head .count { font-family: var(--serif); font-size: 17px; color: var(--muted); white-space: nowrap; }
+
+  /* ---------- Projects ---------- */
+  .project {
+    display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(28px, 4vw, 64px);
+    align-items: center;
+    padding: 56px 0;
+    border-top: 1px solid var(--line);
+  }
+  .project.flip .p-media { order: 2; }
+  .project.flip .p-body { order: 1; }
+  @media (max-width: 860px) {
+    .project { grid-template-columns: 1fr; gap: 26px; padding: 44px 0; }
+    .project.flip .p-media { order: 0; }
+    .project.flip .p-body { order: 1; }
+  }
+  .p-media { position: relative; overflow: hidden; border-radius: 2px; background: #e9e6df; }
+  .p-media img {
+    width: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: top;
+    transition: transform 0.6s ease;
+  }
+  .project:hover .p-media img { transform: scale(1.03); }
+  .p-body .meta {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 16px;
+  }
+  .p-body .meta .no { font-family: var(--serif); font-size: 15px; color: var(--accent-deep); }
+  .p-body .meta .rule { flex: 0 0 34px; height: 1px; background: var(--accent); }
+  .p-body .meta .cat { font-size: 11.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .p-body h3 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(26px, 3vw, 36px); line-height: 1.12; letter-spacing: -0.01em;
+    color: var(--ink); margin-bottom: 14px;
+  }
+  .p-body p { font-size: 15.5px; max-width: 48ch; }
+  .p-actions { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .act {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 12px 22px; text-decoration: none; cursor: pointer; border-radius: 2px;
+    font-family: var(--sans); font-weight: 600; font-size: 12px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    transition: background 0.18s, color 0.18s, border-color 0.18s;
+  }
+  .act.solid { background: var(--ink); color: #fff; border: 1px solid var(--ink); }
+  .act.solid:hover, .act.solid:focus-visible { background: var(--accent-deep); border-color: var(--accent-deep); }
+  .act.line { border: 1px solid #b9b5aa; color: var(--ink); background: transparent; }
+  .act.line:hover, .act.line:focus-visible { border-color: var(--ink); background: var(--ink); color: #fff; }
+  .act svg { flex: none; }
+
+  /* ---------- Congomah strip ---------- */
+  .strip-block { padding: 56px 0 64px; border-top: 1px solid var(--line); }
+  .strip-head {
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+    margin-bottom: 30px;
+  }
+  .strip-head .hint { font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  @media (max-width: 680px) { .strip-head .hint { display: none; } }
+  .strip {
+    display: flex; gap: 14px; overflow-x: auto; padding-bottom: 14px;
+    scroll-snap-type: x mandatory;
+    margin: 0 -28px; padding-left: 28px; padding-right: 28px;
+    scrollbar-width: thin; scrollbar-color: var(--accent) transparent;
+  }
+  .strip figure {
+    flex: 0 0 min(560px, 78vw); scroll-snap-align: start;
+    position: relative; cursor: zoom-in; overflow: hidden; border-radius: 2px;
+  }
+  .strip img {
+    width: 100%; aspect-ratio: 16 / 10; object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .strip figure:hover img { transform: scale(1.03); }
+  .strip figcaption {
+    position: absolute; left: 0; bottom: 0;
+    background: rgba(18,20,23,0.82); color: #fff;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 6px 12px;
+  }
+
+  /* ---------- Capability ---------- */
+  #about { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .cap-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(32px, 5vw, 80px); }
+  @media (max-width: 880px) { .cap-grid { grid-template-columns: 1fr; } }
+  .cap-quote {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(24px, 2.8vw, 32px); line-height: 1.35; letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+  .cap-quote::after {
+    content: ""; display: block; width: 56px; height: 2px; background: var(--accent); margin-top: 26px;
+  }
+  .cap-copy { margin-top: 28px; }
+  .cap-copy p { margin-bottom: 16px; font-size: 15.5px; }
+  .fact-list { border-top: 1px solid var(--line); }
+  .fact {
+    display: grid; grid-template-columns: 150px 1fr; gap: 18px;
+    padding: 18px 0; border-bottom: 1px solid var(--line);
+  }
+  .fact dt { font-size: 11.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-deep); padding-top: 3px; }
+  .fact dd { font-size: 14.5px; }
+  .fact dd b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 560px) { .fact { grid-template-columns: 1fr; gap: 4px; } }
+
+  /* ---------- Contact ---------- */
+  #contact { background: var(--ink); color: #fff; }
+  #contact .inner { padding: 110px 0 90px; }
+  #contact .label { color: var(--accent-bright); }
+  #contact h2 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(38px, 6vw, 72px); line-height: 1.06; letter-spacing: -0.01em;
+    max-width: 760px; margin-top: 14px;
+  }
+  #contact .sub { margin-top: 20px; font-size: 16px; color: rgba(255,255,255,0.72); max-width: 56ch; }
+  .con-links { margin-top: 44px; display: flex; flex-direction: column; gap: 4px; max-width: 560px; }
+  .con-links a, .con-links span {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 18px;
+    padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.16);
+    text-decoration: none; font-size: 16px;
+  }
+  .con-links .k { font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .con-links a .v { font-family: var(--serif); font-size: 19px; transition: color 0.15s; }
+  .con-links span .v { font-family: var(--serif); font-size: 19px; }
+  .con-links a:hover .v, .con-links a:focus-visible .v { color: var(--accent-bright); }
+
+  footer { background: var(--ink); color: rgba(255,255,255,0.45); border-top: 1px solid rgba(255,255,255,0.1); }
+  footer .wrap {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    padding-top: 24px; padding-bottom: 26px;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  /* ---------- Modals ---------- */
+  .modal {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(10, 11, 13, 0.93);
+    display: none; align-items: center; justify-content: center;
+    padding: 4vh 4vw;
+  }
+  .modal.open { display: flex; }
+  .modal-box { width: min(1100px, 100%); }
+  .modal-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; color: #fff; }
+  .modal-top .m-title { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; }
+  .m-close {
+    background: none; border: 1px solid rgba(255,255,255,0.4); color: #fff; border-radius: 2px;
+    font-family: var(--sans); font-weight: 600; font-size: 11.5px; letter-spacing: 0.12em;
+    padding: 9px 18px; cursor: pointer; text-transform: uppercase;
+  }
+  .m-close:hover, .m-close:focus-visible { border-color: var(--accent-bright); color: var(--accent-bright); }
+  .video-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+  .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  .gallery-main { position: relative; background: #000; }
+  .gallery-main img { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; }
+  .g-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(18,20,23,0.85); color: #fff; border: none; border-radius: 2px;
+    width: 46px; height: 46px; font-size: 20px; cursor: pointer;
+  }
+  .g-nav:hover, .g-nav:focus-visible { background: var(--accent-bright); color: var(--ink); }
+  .g-prev { left: 12px; } .g-next { right: 12px; }
+  .g-count {
+    position: absolute; bottom: 12px; right: 12px;
+    background: rgba(18,20,23,0.85); color: #fff; border-radius: 2px;
+    font-size: 11.5px; padding: 6px 12px; letter-spacing: 0.14em;
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="site-nav">
+  <div class="wrap nav-inner">
+    <a class="nav-name" href="#top">Hemen <em>Boodia</em></a>
+    <nav class="links" aria-label="Site">
+      <a href="#projects">Projects</a>
+      <a href="#about">Capability</a>
+      <a href="#contact">Contact</a>
+      <a class="pill" href="assets/Hemen_Boodia_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="https://drive.google.com/thumbnail?id=19KRBvym3COBeCmLs9yjHorjgwSJbagm8&amp;sz=w1600"
+           alt="" loading="eager">
+    </div>
+    <div class="wrap hero-inner">
+      <p class="label">Construction Management &middot; Perth, Western Australia</p>
+      <h1>Building careful,<br>costed, deliverable<br>projects.</h1>
+      <p class="lede">
+        I&rsquo;m Hemen Boodia, a final year Construction Management student at Curtin
+        University with High Distinctions in Cost Management and Contract Administration,
+        and hands-on site experience across procurement, cost tracking and inspections.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="#projects">View projects</a>
+        <a class="btn btn-ghost" href="assets/Hemen_Boodia_Resume.pdf" target="_blank" rel="noopener">Download resume</a>
+      </div>
+    </div>
+    <span class="credit">Fremantle Development, project visualisation</span>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <div class="stats" aria-label="Profile summary">
+    <div class="wrap stats-row">
+      <div class="stat"><div class="n">07</div><div class="t">Projects</div></div>
+      <div class="stat"><div class="n">7&times;</div><div class="t">High Distinctions</div></div>
+      <div class="stat"><div class="n">02</div><div class="t">Countries</div></div>
+      <div class="stat"><div class="n">Nov 26</div><div class="t">Graduating</div></div>
+    </div>
+  </div>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="sec" aria-label="Projects">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <p class="label">Selected work</p>
+          <h2>Projects</h2>
+        </div>
+        <span class="count">01 &ndash;&gt; 07</span>
+      </div>
+
+      <!-- 01 -->
+      <article class="project reveal">
+        <div class="p-media">
+          <img src="https://drive.google.com/thumbnail?id=1K3QHGq3qK9cWVayiEpuy6x4tlQp7eYQd&amp;sz=w1600"
+               alt="Causeway to Curtin proposal document cover" loading="lazy">
+        </div>
+        <div class="p-body">
+          <div class="meta"><span class="no">01</span><span class="rule"></span><span class="cat">Urban Design &middot; Perth WA</span></div>
+          <h3>Causeway to Curtin Proposal</h3>
+          <p>A proposal for the corridor linking Perth&rsquo;s Causeway precinct to Curtin
+             University. The study works through connectivity, movement and precinct
+             activation along one of the city&rsquo;s key growth corridors.</p>
+          <div class="p-actions">
+            <a class="act solid" target="_blank" rel="noopener"
+               href="https://drive.google.com/file/d/1K3QHGq3qK9cWVayiEpuy6x4tlQp7eYQd/view">
+              Project document</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 -->
+      <article class="project flip reveal">
+        <div class="p-media">
+          <img src="https://drive.google.com/thumbnail?id=19KRBvym3COBeCmLs9yjHorjgwSJbagm8&amp;sz=w1600"
+               alt="Fremantle Development flythrough still" loading="lazy">
+        </div>
+        <div class="p-body">
+          <div class="meta"><span class="no">02</span><span class="rule"></span><span class="cat">Development &middot; Fremantle WA</span></div>
+          <h3>Fremantle Development</h3>
+          <p>A development proposal for a site in Fremantle that answers the port
+             city&rsquo;s heritage context with contemporary built form. Fully documented,
+             with a rendered flythrough of the scheme.</p>
+          <div class="p-actions">
+            <a class="act solid" target="_blank" rel="noopener"
+               href="https://drive.google.com/file/d/1Uoh30Vs_bms7s2v3wxxg_F0V_FwLXZQI/view">
+              Project document</a>
+            <button class="act line" data-video="19KRBvym3COBeCmLs9yjHorjgwSJbagm8"
+                    data-title="Fremantle Development Flythrough">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2l10 6-10 6z"/></svg>
+              Flythrough</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 -->
+      <article class="project reveal">
+        <div class="p-media">
+          <img src="https://drive.google.com/thumbnail?id=1bQAj6PLEBLBH5h6MgAJmjdE6qXu19QWP&amp;sz=w1600"
+               alt="Karla Knara West Ellenbrooke flythrough still" loading="lazy">
+        </div>
+        <div class="p-body">
+          <div class="meta"><span class="no">03</span><span class="rule"></span><span class="cat">Precinct &middot; Ellenbrooke WA</span></div>
+          <h3>Karla Knara West, Ellenbrooke</h3>
+          <p>A precinct design for Karla Knara West in the Ellenbrooke growth area,
+             covering residential built form and public realm in one of Perth&rsquo;s
+             fastest growing corridors. Includes a full 3D flythrough.</p>
+          <div class="p-actions">
+            <a class="act solid" target="_blank" rel="noopener"
+               href="https://drive.google.com/file/d/1rGwHXlO_VLHNpUszKkDjJLRwn0Nxtqij/view">
+              Project document</a>
+            <button class="act line" data-video="1bQAj6PLEBLBH5h6MgAJmjdE6qXu19QWP"
+                    data-title="Karla Knara West Flythrough">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2l10 6-10 6z"/></svg>
+              Flythrough</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 Congomah strip -->
+      <div class="strip-block reveal" aria-label="Congomah Residence render gallery">
+        <div class="strip-head">
+          <div>
+            <div class="meta" style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
+              <span style="font-family:var(--serif);font-size:15px;color:var(--accent-deep)">04</span>
+              <span style="flex:0 0 34px;height:1px;background:var(--accent)"></span>
+              <span class="label" style="color:var(--muted)">Residential &middot; Congomah, Mauritius</span>
+            </div>
+            <h3 style="font-family:var(--serif);font-weight:500;font-size:clamp(26px,3vw,36px);line-height:1.12;color:var(--ink)">Congomah Residence</h3>
+            <p style="margin-top:10px;max-width:60ch;font-size:15.5px">A residential design in Congomah, Mauritius, presented through a set of ten
+               exterior renders. Select any image to view it full screen.</p>
+          </div>
+          <span class="hint">Scroll sideways</span>
+        </div>
+        <div class="strip" id="render-strip" tabindex="0" aria-label="Ten exterior renders, scroll horizontally"></div>
+      </div>
+
+      <!-- 05 -->
+      <article class="project flip reveal">
+        <div class="p-media">
+          <img src="https://drive.google.com/thumbnail?id=12ZMMerc_QgvEvh93bdBR78twQYxweeUq&amp;sz=w1600"
+               alt="Le Caudan Waterfront study document cover" loading="lazy">
+        </div>
+        <div class="p-body">
+          <div class="meta"><span class="no">05</span><span class="rule"></span><span class="cat">Waterfront &middot; Port Louis</span></div>
+          <h3>Le Caudan Waterfront</h3>
+          <p>A design study of Le Caudan Waterfront in Port Louis, responding to the
+             harbourside setting and the precinct&rsquo;s role as a civic and commercial
+             destination.</p>
+          <div class="p-actions">
+            <a class="act solid" target="_blank" rel="noopener"
+               href="https://drive.google.com/file/d/12ZMMerc_QgvEvh93bdBR78twQYxweeUq/view">
+              Project document</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 06 -->
+      <article class="project reveal">
+        <div class="p-media">
+          <img src="assets/cognivue-cover.png"
+               alt="Cognivue prototype interface with AI checkpoint markers on a lecture timeline" loading="lazy">
+        </div>
+        <div class="p-body">
+          <div class="meta"><span class="no">06</span><span class="rule"></span><span class="cat">AI Prototype &middot; Group Project</span></div>
+          <h3>Cognivue</h3>
+          <p>Group project from Curtin&rsquo;s Learning Futures Challenge 2026: AI Unleashed.
+             Cognivue is an AI add-on concept for lecture recordings that pins quiz
+             checkpoints to timestamps, pauses the video for thirty second diagnostics,
+             and reports cohort misconceptions back to lecturers. We built and deployed
+             the working demo in one week.</p>
+          <div class="p-actions">
+            <a class="act solid" target="_blank" rel="noopener"
+               href="https://anishboodia-dot.github.io/ai-ilecture-checkpoints-demo">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 3h7v7M13 3 7 9"/><path d="M11 9v4H3V5h4"/></svg>
+              Live demo</a>
+            <a class="act line" href="assets/Cognivue_Presentation.pptx" download>Presentation</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 07 -->
+      <article class="project flip reveal">
+        <div class="p-media">
+          <img src="https://drive.google.com/thumbnail?id=1c366iyb4HhDyjYfgnabmSfUsHUmfgf3L&amp;sz=w1600"
+               alt="Norman Fisher House case study document cover" loading="lazy">
+        </div>
+        <div class="p-body">
+          <div class="meta"><span class="no">07</span><span class="rule"></span><span class="cat">Architectural Case Study</span></div>
+          <h3>Norman Fisher House</h3>
+          <p>A case study of Louis Kahn&rsquo;s Fisher House, analysed and rebuilt through
+             detailed drawings and 3D modelling.</p>
+          <div class="p-actions">
+            <a class="act solid" target="_blank" rel="noopener"
+               href="https://drive.google.com/file/d/1c366iyb4HhDyjYfgnabmSfUsHUmfgf3L/view">
+              Project document</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ CAPABILITY ============ -->
+  <section id="about" class="sec" aria-label="Capability">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <p class="label">Profile</p>
+          <h2>Capability</h2>
+        </div>
+      </div>
+      <div class="cap-grid">
+        <div class="reveal">
+          <p class="cap-quote">From cost plans and contracts through to site, with the
+             documentation and visualisation skills to communicate every stage.</p>
+          <div class="cap-copy">
+            <p>I am completing a Bachelor of Applied Science in Construction Management at
+               Curtin University. Semester 1 of 2026 returned four High Distinctions and a
+               Distinction across Contract Administration, Cost Management, Professional
+               Practice, Integrated Construction Project and Engineering Measurement,
+               following earlier High Distinctions in Building Surveying, Construction
+               Planning and Scheduling, and Specialised Construction.</p>
+            <p>On site in Mauritius I supported delivery of a four level residential new
+               build as a Project Coordination Assistant. The role covered procurement,
+               supplier and subcontractor coordination, cost tracking against budget,
+               construction documentation and assistance with inspections and safety
+               checks. I am looking for a graduate role in project delivery, contracts
+               administration or commercial construction in Western Australia.</p>
+          </div>
+        </div>
+        <dl class="fact-list reveal">
+          <div class="fact">
+            <dt>Education</dt>
+            <dd><b>Bachelor of Applied Science (Construction Management)</b><br>
+                Curtin University, Perth &middot; expected November 2026</dd>
+          </div>
+          <div class="fact">
+            <dt>Delivery</dt>
+            <dd>Project coordination, program monitoring, site inspections, WHS and quality</dd>
+          </div>
+          <div class="fact">
+            <dt>Commercial</dt>
+            <dd>Contract administration support, cost estimation and tracking, procurement,
+                subcontractor and supplier liaison</dd>
+          </div>
+          <div class="fact">
+            <dt>Measurement</dt>
+            <dd>CESMM4, take offs, bills of quantities</dd>
+          </div>
+          <div class="fact">
+            <dt>Software</dt>
+            <dd><b>CostX &middot; Microsoft Project &middot; Excel</b><br>
+                Revit, Navisworks, Revizto, AutoCAD, Lumion</dd>
+          </div>
+          <div class="fact">
+            <dt>Languages</dt>
+            <dd>English, French (DELF B2), Mauritian Creole</dd>
+          </div>
+          <div class="fact">
+            <dt>Awards</dt>
+            <dd>Duke of Edinburgh International Award, Gold</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" aria-label="Contact">
+    <div class="wrap inner">
+      <p class="label reveal">Contact</p>
+      <h2 class="reveal">Ready to contribute from day one on site or in the office.</h2>
+      <p class="sub reveal">Seeking a graduate role in project delivery, contracts
+         administration or commercial construction in Western Australia.</p>
+      <div class="con-links reveal">
+        <a href="mailto:boodiahemen@gmail.com"><span class="k">Email</span><span class="v">boodiahemen@gmail.com</span></a>
+        <a href="tel:+61434716685"><span class="k">Phone</span><span class="v">0434 716 685</span></a>
+        <span><span class="k">Location</span><span class="v">Perth, Western Australia</span></span>
+        <a href="assets/Hemen_Boodia_Resume.pdf" target="_blank" rel="noopener"><span class="k">Resume</span><span class="v">Download PDF</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Hemen Boodia</span>
+    <span>Perth, Western Australia</span>
+  </div>
+</footer>
+
+<!-- ============ VIDEO MODAL ============ -->
+<div class="modal" id="video-modal" role="dialog" aria-modal="true" aria-label="Flythrough video">
+  <div class="modal-box">
+    <div class="modal-top">
+      <span class="m-title" id="video-title">Flythrough</span>
+      <button class="m-close" data-close>Close</button>
+    </div>
+    <div class="video-frame" id="video-frame"></div>
+  </div>
+</div>
+
+<!-- ============ GALLERY MODAL ============ -->
+<div class="modal" id="gallery-modal" role="dialog" aria-modal="true" aria-label="Congomah Residence render viewer">
+  <div class="modal-box">
+    <div class="modal-top">
+      <span class="m-title">Congomah Residence</span>
+      <button class="m-close" data-close>Close</button>
+    </div>
+    <div class="gallery-main">
+      <img id="gallery-img" src="" alt="Congomah Residence render">
+      <button class="g-nav g-prev" id="g-prev" aria-label="Previous render">&#8249;</button>
+      <button class="g-nav g-next" id="g-next" aria-label="Next render">&#8250;</button>
+      <span class="g-count" id="g-count">1 / 10</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Congomah render gallery (Google Drive file IDs)
+  var GALLERY_IDS = [
+    "1tdKZOUR3S2L5_CNAnUMUGQgYXX3_oudx",
+    "19XCDq9ollPsx2KGYPvvzOvInnrym4lI8",
+    "1kLK1D906hD-s9jwFIFH6q5MTLVezX27g",
+    "1LJWtw7lNSlhwTtPT8hYkeLQUW6-cziXF",
+    "1ZCOJhY1n0fOcKc0GdJ4OzkdVOkOem1w8",
+    "1PFLV2aIfiexYY6PhPklN1lg5c2lYxdSo",
+    "1-3gug0nrGlhNqyLwynRH1o9auqNde1_m",
+    "17QcR1-xWjuDUN-3rNrYk8HtcfcKngnbc",
+    "1AkThs8w_psKQqdl7sregVd65dxTjixJs",
+    "1cGVknfMFkLUiwiB9qah5JK1enpRCQljv"
+  ];
+  function thumbUrl(id, w) { return "https://drive.google.com/thumbnail?id=" + id + "&sz=w" + w; }
+
+  // Google Drive's thumbnail service can throttle bursts of requests.
+  // On error, retry the image through a cascade of sizes with backoff.
+  var RETRY_SIZES = [1600, 800, 1200, 400, 2000];
+  function attachDriveRetry(img) {
+    img.addEventListener("error", function () {
+      var attempt = parseInt(img.dataset.retry || "0", 10);
+      if (attempt >= 8 || img.src.indexOf("drive.google.com/thumbnail") === -1) return;
+      img.dataset.retry = attempt + 1;
+      var base = img.src.split("&sz=")[0];
+      var size = RETRY_SIZES[attempt % RETRY_SIZES.length];
+      setTimeout(function () {
+        img.src = base + "&sz=w" + size + "&r=" + (attempt + 1);
+      }, 600 * (attempt + 1));
+    });
+  }
+  document.querySelectorAll('img[src*="drive.google.com/thumbnail"]').forEach(attachDriveRetry);
+
+  // Nav background on scroll
+  var nav = document.getElementById("site-nav");
+  function navState() { nav.classList.toggle("solid", window.scrollY > 40); }
+  window.addEventListener("scroll", navState, { passive: true });
+  navState();
+
+  // Reveal on scroll
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var revealEls = document.querySelectorAll(".reveal");
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    revealEls.forEach(function (el) { el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  }
+
+  // Build the Congomah strip
+  var stripEl = document.getElementById("render-strip");
+  GALLERY_IDS.forEach(function (id, i) {
+    var fig = document.createElement("figure");
+    var img = document.createElement("img");
+    img.src = thumbUrl(id, 1600);
+    img.loading = "lazy";
+    img.alt = "Congomah Residence exterior render " + (i + 1) + " of " + GALLERY_IDS.length;
+    attachDriveRetry(img);
+    var cap = document.createElement("figcaption");
+    cap.textContent = (i + 1 < 10 ? "0" : "") + (i + 1) + " / 10";
+    fig.appendChild(img); fig.appendChild(cap);
+    fig.addEventListener("click", function () { showRender(i); openModal(galleryModal); });
+    stripEl.appendChild(fig);
+  });
+
+  var videoModal = document.getElementById("video-modal");
+  var videoFrame = document.getElementById("video-frame");
+  var videoTitle = document.getElementById("video-title");
+  var galleryModal = document.getElementById("gallery-modal");
+  var galleryImg = document.getElementById("gallery-img");
+  var gCount = document.getElementById("g-count");
+  var gIndex = 0;
+  var lastFocus = null;
+
+  function openModal(m) {
+    lastFocus = document.activeElement;
+    m.classList.add("open");
+    document.body.style.overflow = "hidden";
+    var c = m.querySelector(".m-close");
+    if (c) c.focus();
+  }
+  function closeModals() {
+    videoModal.classList.remove("open");
+    galleryModal.classList.remove("open");
+    videoFrame.innerHTML = ""; // stop playback
+    document.body.style.overflow = "";
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  document.querySelectorAll("[data-video]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      videoTitle.textContent = btn.getAttribute("data-title") || "Flythrough";
+      videoFrame.innerHTML = '<iframe src="https://drive.google.com/file/d/' +
+        btn.getAttribute("data-video") + '/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+      openModal(videoModal);
+    });
+  });
+
+  function showRender(i) {
+    gIndex = (i + GALLERY_IDS.length) % GALLERY_IDS.length;
+    galleryImg.dataset.retry = "0";
+    galleryImg.src = thumbUrl(GALLERY_IDS[gIndex], 1600);
+    galleryImg.alt = "Congomah Residence render " + (gIndex + 1) + " of " + GALLERY_IDS.length;
+    gCount.textContent = (gIndex + 1) + " / " + GALLERY_IDS.length;
+  }
+  attachDriveRetry(galleryImg);
+  document.getElementById("g-prev").addEventListener("click", function () { showRender(gIndex - 1); });
+  document.getElementById("g-next").addEventListener("click", function () { showRender(gIndex + 1); });
+
+  document.querySelectorAll("[data-close]").forEach(function (b) { b.addEventListener("click", closeModals); });
+  [videoModal, galleryModal].forEach(function (m) {
+    m.addEventListener("click", function (e) { if (e.target === m) closeModals(); });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeModals();
+    if (galleryModal.classList.contains("open")) {
+      if (e.key === "ArrowLeft") showRender(gIndex - 1);
+      if (e.key === "ArrowRight") showRender(gIndex + 1);
+    }
+  });
+</script>
+
+</body>
+</html>
