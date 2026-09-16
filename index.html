@@ -146,6 +146,37 @@
     text-transform: uppercase; color: rgba(255,255,255,0.55);
   }
   .hero .scope-row b { color: rgba(255,255,255,0.85); font-weight: 500; }
+  .hero-photo {
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+    margin-bottom: 26px;
+  }
+  @media (min-width: 1080px) {
+    .hero .wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas:
+        "kicker kicker"
+        "headline photo"
+        "lede photo"
+        "cta cta"
+        "scope scope";
+      column-gap: 40px;
+    }
+    .hero .kicker { grid-area: kicker; }
+    .hero h1 { grid-area: headline; }
+    .hero p.lede { grid-area: lede; }
+    .hero .cta-row { grid-area: cta; }
+    .hero .scope-row { grid-area: scope; }
+    .hero-photo {
+      grid-area: photo;
+      width: 320px; height: 320px;
+      align-self: center; justify-self: end;
+      margin-bottom: 0;
+    }
+  }
   @media (max-width: 400px) {
     .hero { padding: 72px 0 64px; }
     .hero h1 { font-size: 36px; }
@@ -439,6 +470,7 @@
   <!-- ============ HERO ============ -->
   <section class="hero" aria-label="Introduction">
     <div class="wrap">
+      <img class="hero-photo" src="assets/hemen-boodia.jpg" alt="Hemen Boodia" width="600" height="600">
       <p class="kicker">Construction Management &middot; Perth, Western Australia</p>
       <h1>Delivering the<br>built environment</h1>
       <p class="lede">
